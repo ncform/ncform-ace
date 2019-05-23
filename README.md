@@ -2,7 +2,39 @@
 
 ncform-ace widget for [ncform](https://github.com/ncform/ncform)
 
-How to use this widget please refer to [ [Custom ncform widget](https://github.com/ncform/ncform/blob/master/EXT-DOC.md#Custom-form-widget) ]
+## Install and basic usage
+
+```
+npm i -s @ncform/ncform-ace
+```
+
+**Add the widget**
+
+```
+import ncformAce from '@ncform/ncform-ace';
+
+Vue.use(vueNcform, { extComponents: {ncformAce} });
+
+// or vm.$ncformAddWidget({name: 'ncformAce', widget: ncformAce});
+
+```
+
+**Use the widget**
+
+```
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "widget": "ncform-ace",
+      "widgetConfig": {
+        "height": "300px"    
+      }
+    }
+  }
+}
+```
 
 ## Project setup
 ```

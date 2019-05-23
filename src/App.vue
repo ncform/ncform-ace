@@ -6,7 +6,7 @@
       v-model="formSchema.value"
       @submit="submit()"
     ></ncform>
-    <hr />
+    <hr>
     <el-button @click="submit()">Submit</el-button>
   </div>
 </template>
@@ -26,11 +26,28 @@ export default {
           demo: {
             type: "string",
             ui: {
-              widget: "ncform-ace"
+              widget: "ncform-ace",
+              widgetConfig: {
+                height: '300px'
+              }
             }
           }
         },
-        value: {}
+        value: {
+          demo: JSON.stringify({
+            type: "object",
+            properties: {
+              keyword: {
+                type: "string"
+              }
+            },
+            ui: {
+              widgetConfig: {
+                layout: "h"
+              }
+            }
+          })
+        }
       }
     };
   },
