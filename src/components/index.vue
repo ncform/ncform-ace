@@ -1,29 +1,32 @@
 <template>
   <div class="ncform-ace">
-    <div class="item-wrapper">
-      <div ref="ace" :style="{height: mergeConfig.height}"></div>
-    </div>
+    <div class="wrapper">
+      <div class="item-wrapper">
+        <div ref="ace" :style="{height: mergeConfig.height}"></div>
+      </div>
 
-    <div class="split-line">
-      <i class="el-icon-arrow-right"></i>
-    </div>
+      <div class="split-line">
+        <i class="el-icon-arrow-right"></i>
+      </div>
 
-    <div class="item-wrapper" :style="{height: mergeConfig.height}">
-      <ncform v-if="formSchema" :form-schema="formSchema" :form-name="formName"></ncform>
+      <div class="item-wrapper" :style="{height: mergeConfig.height}">
+        <ncform v-if="formSchema" :form-schema="formSchema" :form-name="formName"></ncform>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .ncform-ace {
+.ncform-ace {
+  .wrapper {
+    border: 1px solid #dcdfe6;
     display: flex;
-    border: 1px solid #DCDFE6;
     .item-wrapper {
       flex: 1;
       overflow-y: auto;
     }
     .split-line {
-      border: 1px solid #DCDFE6;
+      border: 1px solid #dcdfe6;
       border-radius: 8px;
       position: relative;
       width: 16px;
@@ -36,6 +39,7 @@
       }
     }
   }
+}
 </style>
 
 <script>
@@ -50,10 +54,8 @@ export default {
 
   i18nData: {
     // i18n
-    en: {
-    },
-    zh_cn: {
-    }
+    en: {},
+    zh_cn: {}
   },
 
   mounted() {
@@ -80,15 +82,21 @@ export default {
             2
           )
     );
-    this.editor.getSession().on("changeAnnotation", _debounce(() => {
-      const annotations = this.editor.getSession().getAnnotations();
-      if (annotations.length === 0) { // Correct grammar
-        this.$data.schemaChanged = JSON.stringify(this.formSchema) !== JSON.stringify(JSON.parse(this.editor.getValue()));
-        if (this.$data.schemaChanged) {
-          this.preview();
+    this.editor.getSession().on(
+      "changeAnnotation",
+      _debounce(() => {
+        const annotations = this.editor.getSession().getAnnotations();
+        if (annotations.length === 0) {
+          // Correct grammar
+          this.$data.schemaChanged =
+            JSON.stringify(this.formSchema) !==
+            JSON.stringify(JSON.parse(this.editor.getValue()));
+          if (this.$data.schemaChanged) {
+            this.preview();
+          }
         }
-      }
-    }, 500))
+      }, 500)
+    );
 
     this.preview();
   },
@@ -102,7 +110,7 @@ export default {
 
       defaultConfig: {
         // your config's default value ( Note: use mergeConfig to get config value )
-        height: '300px'
+        height: "300px"
       }
     };
   },

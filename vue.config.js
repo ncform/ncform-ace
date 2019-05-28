@@ -2,7 +2,10 @@ const merge = require("webpack-merge");
 
 module.exports = merge(
   {
-    lintOnSave: false
+    lintOnSave: false,
+    css: {
+      extract: false
+    }
   },
   process.env.NODE_ENV === "production"
     ? {

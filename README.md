@@ -2,6 +2,8 @@
 
 ncform-ace widget for [ncform](https://github.com/ncform/ncform)
 
+![](preview.gif)
+
 ## Install and basic usage
 
 ```
