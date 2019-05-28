@@ -2,7 +2,7 @@
 
 ncform-ace widget for [ncform](https://github.com/ncform/ncform)
 
-![](preview.gif)
+![](https://raw.githubusercontent.com/ncform/ncform-ace/master/preview.gif)
 
 ## Install and basic usage
 
