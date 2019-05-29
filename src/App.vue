@@ -24,7 +24,7 @@ export default {
         type: "object",
         properties: {
           demo: {
-            type: "string",
+            type: "object",
             ui: {
               widget: "ncform-ace",
               widgetConfig: {
@@ -34,7 +34,7 @@ export default {
           }
         },
         value: {
-          demo: JSON.stringify({
+          demo: {
             type: "object",
             properties: {
               keyword: {
@@ -46,7 +46,7 @@ export default {
                 layout: "h"
               }
             }
-          })
+          }
         }
       }
     };

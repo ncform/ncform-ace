@@ -28,7 +28,7 @@ Vue.use(vueNcform, { extComponents: {ncformAce} });
   "type": "object",
   "properties": {
     "name": {
-      "type": "string",
+      "type": "object",
       "widget": "ncform-ace",
       "widgetConfig": {
         "height": "300px"    

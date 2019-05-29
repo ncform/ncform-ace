@@ -48,6 +48,7 @@ import ace from "brace";
 import "brace/mode/json";
 import "brace/ext/language_tools";
 import _debounce from "lodash-es/debounce";
+import _isPlainObject from "lodash-es/isPlainObject";
 
 export default {
   mixins: [ncformCommon.mixins.vue.controlMixin],
@@ -67,8 +68,8 @@ export default {
     });
     this.editor.completers = [this._getWordCompleter()];
     this.editor.setValue(
-      this.value
-        ? JSON.stringify(JSON.parse(this.value), null, 2)
+      _isPlainObject(this.value)
+        ? JSON.stringify(this.value, null, 2)
         : JSON.stringify(
             {
               type: "object",
@@ -119,7 +120,7 @@ export default {
     preview() {
       const value = this.editor.getValue();
       this.$data.formSchema = JSON.parse(value);
-      this.$data.modelVal = JSON.stringify(this.$data.formSchema);
+      this.$data.modelVal = this.$data.formSchema;
       this.$data.schemaChanged = false;
     },
 
