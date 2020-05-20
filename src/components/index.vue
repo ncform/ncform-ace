@@ -46,6 +46,7 @@
 import ncformCommon from "@ncform/ncform-common";
 import ace from "brace";
 import "brace/mode/json";
+import "brace/mode/css";
 import "brace/ext/language_tools";
 import _debounce from "lodash-es/debounce";
 import _isPlainObject from "lodash-es/isPlainObject";
@@ -132,6 +133,8 @@ export default {
     _getWordCompleter() {
       return {
         getCompletions: function(editor, session, pos, prefix, callback) {
+          var token = session.getTokenAt(pos.row, pos.column);
+          console.log('>>>', token)
           let wordList = [
             {
               label: "type",
